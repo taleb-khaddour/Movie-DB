@@ -1,0 +1,26 @@
+{
+  "name": "movie_database",
+  "version": "1.0.0",
+  "description": "directory",
+  "main": "index.js",
+  "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1", // this should be there
+        "dev": "nodemon index.js"
+    },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taleb-khaddour/Movie-DB.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taleb-khaddour/Movie-DB/issues"
+  },
+  "homepage": "https://github.com/taleb-khaddour/Movie-DB#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
