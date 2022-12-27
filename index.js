@@ -86,6 +86,21 @@ app.get('/movies/read/by-rating', (req, res) => {
   });
   
 
+
+app.get('/movies/read/id/:id', (req, res) => {
+    const id = Number(req.params.id);
+    const movie = movies.find((movie) => movie.id === id);
+    if (!movie) {
+      res.status(404).json({
+        status: 404,
+        error: true,
+        message: `The movie ${id} does not exist`,
+      });
+    } else {
+      res.json({ status: 200, data: movie });
+    }
+  });
+
   // }
   
 
