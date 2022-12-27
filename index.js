@@ -51,11 +51,47 @@ app.post('/movies/create', (req, res) => {
     res.send('Movie creation route');
   });
   
+
+
+
+
+
+  //read{
+
   app.get('/movies/read', (req, res) => {
     // TODO: Implement movie reading logic
     res.json({ status: 200, data: movies });
   });
+
+//by date
+
+  app.get('/movies/read/by-date', (req, res) => {
+    const sortedMovies = movies.sort((a, b) => a.year - b.year);
+    res.json({ status: 200, data: sortedMovies });
+  });
+
+
+//by rating
+
+
+app.get('/movies/read/by-rating', (req, res) => {
+    const sortedMovies = movies.sort((a, b) => b.rating - a.rating);
+    res.json({ status: 200, data: sortedMovies });
+  });
+
+  //by title
+  app.get('/movies/read/by-title', (req, res) => {
+    const sortedMovies = movies.sort((a, b) => a.title.localeCompare(b.title));
+    res.json({ status: 200, data: sortedMovies });
+  });
   
+
+  // }
+  
+
+
+
+
   app.put('/movies/update', (req, res) => {
     // TODO: Implement movie update logic
     res.send('Movie update route');
