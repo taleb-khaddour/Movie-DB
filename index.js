@@ -117,7 +117,28 @@ app.get('/movies/read/id/:id', (req, res) => {
     res.send('Movie delete route');
   });
   
-
+  app.get('/movies/add', (req, res) => {
+    const title = req.query.title;
+    const year = Number(req.query.year);
+    let rating = Number(req.query.rating);
+  
+    if (!title || !year || !/^\d{4}$/.test(year) || isNaN(year)) {
+      res.status(403).json({
+        status: 403,
+        error: true,
+        message: 'You cannot create a movie without providing a title and a year',
+      });
+      return;
+    }
+  
+    if (!rating || isNaN(rating)) {
+      rating = 4;
+    }
+  
+    const newMovie = { id: movies.length + 1, title, year, rating };
+    movies.push(newMovie);
+    res.json({ status: 200, data: movies });
+  });
 
 
 
