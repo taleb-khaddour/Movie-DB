@@ -112,10 +112,24 @@ app.get('/movies/read/id/:id', (req, res) => {
     res.send('Movie update route');
   });
   
-  app.delete('/movies/delete', (req, res) => {
-    // TODO: Implement movie delete logic
-    res.send('Movie delete route');
+
+  app.get('/movies/delete/:id', (req, res) => {
+    const id = Number(req.params.id);
+    const movieIndex = movies.findIndex((movie) => movie.id === id);
+    if (movieIndex === -1) {
+      res.status(404).json({
+        status: 404,
+        error: true,
+        message: `The movie ${id} does not exist`,
+      });
+    } else {
+      movies.splice(movieIndex, 1);
+      res.json({ status: 200, data: movies });
+    }
   });
+
+  
+  // add
   
   app.get('/movies/add', (req, res) => {
     const title = req.query.title;
